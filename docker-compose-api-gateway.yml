@@ -1,0 +1,10 @@
+services:
+  api-gateway:
+    image: ${AWS_ACCOUNT_ID}.dkr.ecr.ap-south-1.amazonaws.com/iers-api-gateway:latest
+    container_name: api-gateway
+    ports:
+      - "8165:8165"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://host.docker.internal:8761/eureka/
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

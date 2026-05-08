@@ -1,0 +1,26 @@
+server:
+  port: 8165
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            # Route 1: Authentication Service
+            - id: auth-service-route
+              uri: lb://IERS-AUTHENTICATION-SERVICE
+              predicates:
+                - Path=/auth/**
+              filters:
+                - RewritePath=/auth/(?<segment>.*), /$\{segment}
+
+            # Route 2: Contact Service
+            - id: contacts-service-route
+              uri: lb://CONTACTS-SERVICE
+              predicates:
+                - Path=/contacts/**
+              filters:
+                - RewritePath=/contacts/(?<segment>.*), /$\{segment}
