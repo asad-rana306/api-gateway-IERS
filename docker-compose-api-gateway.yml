@@ -1,6 +1,6 @@
 services:
   api-gateway:
-    image: ${AWS_ACCOUNT_ID}.dkr.ecr.ap-south-1.amazonaws.com/iers-api-gateway:latest
+    image: 465891279952.dkr.ecr.ap-south-1.amazonaws.com/iers-api-gateway:latest
     container_name: api-gateway
     ports:
       - "8165:8165"
