@@ -24,3 +24,7 @@ spring:
                 - Path=/contacts/**
               filters:
                 - RewritePath=/contacts/(?<segment>.*), /$\{segment}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
